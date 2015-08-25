@@ -15,10 +15,9 @@ Template.apresentacao.helpers({
 });
 
 Template.apresentacao.events({
-  'click button': function () {
-    Pontos.insert({userId: Session.get('usuario').id, userName: Session.get('usuario').nome});
+  'click #btn-counter': function () {
     Session.set('counter', Session.get('counter') + 1);
-    console.log(Session.get('usuario').id);
+    Meteor.call('inserirPontuacao', Session.get('usuario').id, Session.get('usuario').nome);
   },
   'submit #login': function (event) {
     event.preventDefault();
