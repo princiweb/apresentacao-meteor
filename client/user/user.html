@@ -1,0 +1,14 @@
+<template name="apresentacao">
+  {{#if usuario}}
+    {{#if iniciado}}
+      <button>Click Me</button>
+      <p>You've pressed the button {{counter}} times.</p>
+    {{else}}
+      <p>Quando iniciar aperte o botão o mais rápido possível. Vamos ver quem ganha?</p>
+    {{/if}}
+  {{else}}
+    <form action="" id="login">
+      <input type="text" name="name">
+    </form>
+  {{/if}}
+</template>
