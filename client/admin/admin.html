@@ -2,5 +2,7 @@
   <button id="resetar">Resetar</button>
   <button id="iniciar">Iniciar</button>
 
-  {{iniciado}}
+  {{#each pontuacoes}}
+    {{userName}} - {{pontos}}
+  {{/each}}
 </template>
