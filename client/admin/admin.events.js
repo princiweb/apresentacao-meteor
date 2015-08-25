@@ -23,6 +23,6 @@ Template.admin.events({
 
     Meteor.setTimeout(function () {
       Iniciado.update(Iniciado.findOne({})._id, {$set: {jogoIniciou: false}})
-    }, 3000)
+    }, 5000)
   }
 });
