@@ -1,8 +1,15 @@
 <template name="admin">
-  <button id="resetar">Resetar</button>
-  <button id="iniciar">Iniciar</button>
 
-  {{#each pontuacoes}}
-    {{userName}} - {{pontos}}
-  {{/each}}
+  <div class="container center">
+    <button id="resetar" class="btn-large">Resetar</button>
+    <button id="iniciar" class="btn-large">Iniciar</button>
+    
+    <h1>Cliques: {{pontosRegistrados}}</h1>
+    {{#if pontuacoes}}
+      <h1>Ranking</h1>
+      {{#each pontuacoes}}
+        {{userName}} - {{pontos}}
+      {{/each}}
+    {{/if}}
+  </div>
 </template>

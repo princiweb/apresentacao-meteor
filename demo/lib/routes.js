@@ -1,7 +1,7 @@
-Router.route('/', function () {
-  this.render('apresentacao');
+Router.route('/', {
+  template: 'apresentacao'
 });
 
-Router.route('/admin', function () {
-  this.render('admin');
+Router.route('/admin', {
+  template: 'admin'
 });

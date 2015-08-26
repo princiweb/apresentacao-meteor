@@ -1,4 +1,3 @@
-// counter starts at 0
 Session.setDefault('counter', 0);
 Session.setDefault('usuario', null);
 
@@ -10,12 +9,20 @@ Template.apresentacao.helpers({
     return Session.get('usuario');
   },
   iniciado: function () {
+    if (Iniciado.findOne({}).jogoIniciou)
+      Session.set('counter', 0);
     return Iniciado.findOne({}).jogoIniciou;
   }
 });
 
 Template.apresentacao.events({
-  'click #btn-counter': function () {
+  'mousedown #btn-counter': function (event) {
+    event.preventDefault();
+    Session.set('counter', Session.get('counter') + 1);
+    Meteor.call('inserirPontuacao', Session.get('usuario').id, Session.get('usuario').nome);
+  },
+  'touchstart #btn-counter': function (event) {
+    event.preventDefault();
     Session.set('counter', Session.get('counter') + 1);
     Meteor.call('inserirPontuacao', Session.get('usuario').id, Session.get('usuario').nome);
   },

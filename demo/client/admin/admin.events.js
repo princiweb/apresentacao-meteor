@@ -1,24 +1,33 @@
 Session.setDefault('iniciado', false)
 
+function resetarPontuacao () {
+  var pontos = Pontos.find().fetch();
+  pontos.forEach(function(element){
+    Pontos.remove({_id: element._id});
+  });
+  Session.set('pontuacoes', null)
+}
+
 Template.admin.helpers({
   iniciado: function () {
     return Session.get('iniciado');
   },
   pontuacoes: function () {
     return Session.get('pontuacoes')
+  },
+  pontosRegistrados: function () {
+    return Pontos.find().fetch().length
   }
 });
 
 Template.admin.events({
   'click #resetar': function () {
-    var pontos = Pontos.find().fetch();
-    pontos.forEach(function(element){
-      Pontos.remove({_id: element._id});
-    });
+    resetarPontuacao();
     Iniciado.update(Iniciado.findOne({})._id, {$set: {jogoIniciou: false}});
   },
   'click #iniciar': function () {
-    // Meteor.setTimeout(function () {
+    resetarPontuacao();
+
     if (!Iniciado.findOne({})){
       Iniciado.insert({jogoIniciou: true});
     } else {
