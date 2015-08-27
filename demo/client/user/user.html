@@ -2,8 +2,8 @@
   <div class="container">
     {{#if usuario}}
       {{#if iniciado}}
-        <div class="row">
-          <p>{{counter}}</p>
+        <div class="row center">
+          <h1>{{counter}}</h1>
           <a href="#" id="btn-counter" class="btn-large col s12 waves-effect waves-light">Valendo!</a>
         </div>
       {{else}}
@@ -23,11 +23,10 @@
         <form class="col s12" id="login">
           <div class="row">
             <div class="input-field col s12">
-              <input name="name" id="name" type="text" class="validate" autofocus>
+              <input name="name" id="name" type="text" class="validate" autofocus required>
               <label for="name">Nome</label>
             </div>
           </div>
-
           <button class="btn-large col s12">Enviar</button>
         </form>
       </div>

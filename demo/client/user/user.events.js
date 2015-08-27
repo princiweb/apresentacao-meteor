@@ -1,20 +1,6 @@
 Session.setDefault('counter', 0);
 Session.setDefault('usuario', null);
 
-Template.apresentacao.helpers({
-  counter: function () {
-    return Session.get('counter');
-  },
-  usuario: function () {
-    return Session.get('usuario');
-  },
-  iniciado: function () {
-    if (Iniciado.findOne({}).jogoIniciou)
-      Session.set('counter', 0);
-    return Iniciado.findOne({}).jogoIniciou;
-  }
-});
-
 Template.apresentacao.events({
   'mousedown #btn-counter': function (event) {
     event.preventDefault();
