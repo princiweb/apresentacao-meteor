@@ -5,11 +5,21 @@
     <button id="iniciar" class="btn-large">Iniciar</button>
     
     <h1>Cliques: {{pontosRegistrados}}</h1>
+
     {{#if pontuacoes}}
-      <h1>Ranking</h1>
-      {{#each pontuacoes}}
-        {{userName}} - {{pontos}}
-      {{/each}}
+      <ul class="collection with-header left-align">
+        <li class="collection-header"><h4>Apressado</h4></li>
+        <li class="collection-item"><div>{{apressado}}</div></li>
+      </ul>
+
+      <ul class="collection with-header left-align">
+        <li class="collection-header"><h4>Ranking</h4></li>
+        {{#each pontuacoes}}
+          <li class="collection-item"><div>{{userName}}<span href="#!" class="secondary-content">{{pontos}}</span></div></li>
+        {{/each}}
+      </ul>
     {{/if}}
   </div>
+
+
 </template>

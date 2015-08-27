@@ -8,18 +8,6 @@ function resetarPontuacao () {
   Session.set('pontuacoes', null)
 }
 
-Template.admin.helpers({
-  iniciado: function () {
-    return Session.get('iniciado');
-  },
-  pontuacoes: function () {
-    return Session.get('pontuacoes')
-  },
-  pontosRegistrados: function () {
-    return Pontos.find().fetch().length
-  }
-});
-
 Template.admin.events({
   'click #resetar': function () {
     resetarPontuacao();
@@ -50,7 +38,11 @@ Template.admin.events({
         pontuacoes.push({userName: Pontos.findOne({userId: element}).userName, pontos: Pontos.find({userId: element}).fetch().length});
       });
 
-      Session.set('pontuacoes', pontuacoes)
+      var rankingUsuarios = pontuacoes.sort(function (a, b) {
+        return b.pontos - a.pontos;
+      })
+
+      Session.set('pontuacoes', rankingUsuarios)
 
     }, 4000)
   }
