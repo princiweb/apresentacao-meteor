@@ -11,7 +11,7 @@ function resetarPontuacao () {
 Template.admin.events({
   'click #resetar': function () {
     resetarPontuacao();
-    Iniciado.update(Iniciado.findOne({})._id, {$set: {jogoIniciou: false}});
+    Meteor.call('iniciarOuParar', false);
   },
   'click #iniciar': function () {
     resetarPontuacao();
@@ -19,11 +19,11 @@ Template.admin.events({
     if (!Iniciado.findOne({})){
       Iniciado.insert({jogoIniciou: true});
     } else {
-      Iniciado.update(Iniciado.findOne({})._id, {$set: {jogoIniciou: true}});
+      Meteor.call('iniciarOuParar', true);
     }
 
     Meteor.setTimeout(function () {
-      Iniciado.update(Iniciado.findOne({})._id, {$set: {jogoIniciou: false}});
+      Meteor.call('iniciarOuParar', false);
       var total = Pontos.find().fetch().length;
 
       var usuarios = _.uniq(Pontos.find({}, {
